@@ -1,0 +1,11 @@
+---
+title: "Part 1"
+author: "Bri Baker"
+date: "October 27, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
