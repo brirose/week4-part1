@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ##1. Confidence Intervals
@@ -36,5 +37,62 @@ desert_horns <- c(32, 44, 18, 26, 50, 33, 42, 20)
 sierra_horns <- c(28, 31, 40, 42, 26, 29, 31)
 
 t.test(x = desert_horns, y = sierra_horns)
+```
+
+
+#Part 2
+
+
+
+```{r}
+compact_suv <- mpg %>% 
+  filter(class %in% c("compact" , "suv"))
+
+```
+
+
+##Exploratory Histogram
+
+```{r}
+ggplot(compact_suv, aes(x = cty)) +
+  geom_histogram(bins = 15) +
+  facet_wrap(~class)
+```
+
+##Quantile-quantile plot
+
+```{r}
+ggplot(data = compact_suv, aes(sample = cty))+
+  geom_qq()+
+  facet_wrap(~class)
+```
+
+##Descriptve Stats
+
+```{r}
+car_stats <- compact_suv %>% 
+  group_by(class) %>% 
+  summarize(mean_city = mean(cty),
+            sd_city = sd(cty),
+            n = n())
+
+car_stats
+```
+
+
+## 2-sample t-test
+
+create vectors with observations
+
+```{r}
+compact_cty <- compact_suv %>% 
+  filter(class == "compact") %>% 
+  pull(cty)
+
+suv_cty <- compact_suv %>% 
+  filter(class == "suv") %>% 
+  pull(cty)
+
+t.test(x = compact_cty, y = suv_cty)
 ```
 
