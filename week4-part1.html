@@ -185,7 +185,58 @@ summary {
 </div>
 
 
+<div id="confidence-intervals" class="section level2">
+<h2>1. Confidence Intervals</h2>
+<pre class="r"><code>cats_hat &lt;- c(34, 56, 89, 34, 56, 67, 64, 33, 45, 39)
 
+t.test(cats_hat)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  cats_hat
+## t = 8.9605, df = 9, p-value = 8.851e-06
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  38.64792 64.75208
+## sample estimates:
+## mean of x 
+##      51.7</code></pre>
+</div>
+<div id="t-test-1-sample-t-test" class="section level2">
+<h2>T-Test (1 sample t-test)</h2>
+<p>claim, mean cat hats 30</p>
+<pre class="r"><code>cat_test &lt;- t.test(x = cats_hat , mu = 30)
+cat_test</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  cats_hat
+## t = 3.761, df = 9, p-value = 0.004478
+## alternative hypothesis: true mean is not equal to 30
+## 95 percent confidence interval:
+##  38.64792 64.75208
+## sample estimates:
+## mean of x 
+##      51.7</code></pre>
+</div>
+<div id="t-test2-sample" class="section level2">
+<h2>T-Test(2 sample)</h2>
+<pre class="r"><code>desert_horns &lt;- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_horns &lt;- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x = desert_horns, y = sierra_horns)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  desert_horns and sierra_horns
+## t = 0.14825, df = 10.913, p-value = 0.8849
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -9.653212 11.046069
+## sample estimates:
+## mean of x mean of y 
+##  33.12500  32.42857</code></pre>
+</div>
 
 
 

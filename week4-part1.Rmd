@@ -9,3 +9,32 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+##1. Confidence Intervals
+
+```{r}
+cats_hat <- c(34, 56, 89, 34, 56, 67, 64, 33, 45, 39)
+
+t.test(cats_hat)
+
+```
+
+
+## T-Test (1 sample t-test)
+
+claim, mean cat hats 30
+
+```{r}
+cat_test <- t.test(x = cats_hat , mu = 30)
+cat_test
+
+```
+
+## T-Test(2 sample)
+
+```{r}
+desert_horns <- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_horns <- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x = desert_horns, y = sierra_horns)
+```
+
